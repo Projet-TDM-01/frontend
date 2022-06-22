@@ -1,7 +1,4 @@
-package com.example.projet_tdm.modals
-
-import com.fasterxml.jackson.annotation.JsonProperty
-import com.google.gson.annotations.SerializedName
+package com.example.projet_tdm.entity
 
 data class User(
    // @SerializedName("userId") val userId:Int,

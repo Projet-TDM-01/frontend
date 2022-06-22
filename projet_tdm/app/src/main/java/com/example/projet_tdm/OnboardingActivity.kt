@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
-import com.example.projet_tdm.modals.Onboarding
+import com.example.projet_tdm.entity.Onboarding
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_onboarding.*
 

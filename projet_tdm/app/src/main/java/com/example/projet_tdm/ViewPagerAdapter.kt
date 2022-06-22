@@ -1,14 +1,13 @@
 package com.example.projet_tdm
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
-import com.example.projet_tdm.modals.Onboarding
+import com.example.projet_tdm.entity.Onboarding
 
 class ViewPagerAdapter(private var context: Context,private var onboardingList: List<Onboarding>) : PagerAdapter() {
 
