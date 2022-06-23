@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         mainBinding.loginButton.registerCallback(callbackManager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(loginResult: LoginResult?) {
-                    val graphRequest = GraphRequest.newMeRequest(loginResult?.accessToken){`object` , response->
+                    val graphRequest = GraphRequest.newMeRequest(loginResult?.accessToken){ `object`, response->
                         getFacebookData(`object`)
                     }
                     val parameters = Bundle()
