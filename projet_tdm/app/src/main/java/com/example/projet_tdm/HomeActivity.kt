@@ -17,6 +17,7 @@ class HomeActivity : AppCompatActivity() {
 
         val parkingListFragment = ParkingListFragment()
         val userFragment = UserFragment()
+        val searchFragment = SearchFragment()
 
         setCurrentFragment(parkingListFragment)
 
@@ -24,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_parking_list -> setCurrentFragment(parkingListFragment)
                 R.id.navigation_user -> setCurrentFragment(userFragment)
+                R.id.navigation_search -> setCurrentFragment(searchFragment)
             }
             true
         }

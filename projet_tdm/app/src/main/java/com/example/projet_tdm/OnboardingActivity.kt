@@ -31,7 +31,7 @@ class OnboardingActivity : AppCompatActivity() {
 
 
         skipbtn.setOnClickListener{
-            intent = Intent(this, com.example.projet_tdm.LoginActivity::class.java)
+            intent = Intent(this, com.example.projet_tdm.HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
