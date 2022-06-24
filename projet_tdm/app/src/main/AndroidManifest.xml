@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projet_tdm"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -45,7 +47,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".reservationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
