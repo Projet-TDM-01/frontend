@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Projet_tdm"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".reservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".MapsActivity"
             android:exported="false" />
         <!--
@@ -47,7 +50,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".reservationActivity"
+            android:name=".Confirmation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
