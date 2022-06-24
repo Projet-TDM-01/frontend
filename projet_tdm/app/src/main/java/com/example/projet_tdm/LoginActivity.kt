@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.projet_tdm.databinding.ActivityLoginBinding
+import com.example.projet_tdm.retrofit.authentification
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -26,8 +27,19 @@ class LoginActivity : AppCompatActivity() {
     lateinit var callbackManager : CallbackManager
 
 
+    lateinit var authService : authentification
+    internal var compositeDiposable = compositeDisposable()
+
+    override fun onStop() {
+        compositeDiposable.clear()
+        super.onStop()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        authService = c
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
         /*mainBinding = ActivityLoginBinding.inflate(layoutInflater)
