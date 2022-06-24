@@ -10,5 +10,6 @@ data class Parking(
     val horraireOuver: Int,
     val horraireFerm: Int,
     val tarifHeure: Double,
-    val nbPlace: Int
+    val nbPlace: Int,
+    val reserved:Int?
 )

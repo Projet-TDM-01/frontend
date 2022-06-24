@@ -2,6 +2,7 @@ package com.example.projet_tdm.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +10,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.projet_tdm.R
 import com.example.projet_tdm.entity.Parking
 import com.example.projet_tdm.load
+import com.example.projet_tdm.ui.ParkingDetailsActivity
 import java.time.LocalDateTime
 import java.util.*
 
@@ -42,7 +46,7 @@ class SearchAdapter(val context: Context, var data: List<Parking>) :
             commune.text = data[position].commune
             // get time
             val time = LocalDateTime.now()
-            if(time.hour > data[position].horraireOuver && time.hour < data[position].horraireFerm)
+            if (time.hour > data[position].horraireOuver && time.hour < data[position].horraireFerm)
                 etat.text = "OUVERT"
             else
                 etat.text = "FERMER"
@@ -51,6 +55,12 @@ class SearchAdapter(val context: Context, var data: List<Parking>) :
                 .apply(RequestOptions())
                 .placeholder(R.drawable.parking)
                 .into(img)
+            itemView.setOnClickListener {
+                val bundle = bundleOf("parking_id" to data[position]._id)
+                val intent = Intent(itemView.context, ParkingDetailsActivity::class.java)
+                intent.putExtra("parking_id", data[position]._id)
+                startActivity(itemView.context, intent, bundle)
+            }
         }
     }
 
