@@ -1,5 +1,5 @@
 package com.example.projet_tdm.ViewModels
-import com.example.projet_tdm.modals.Parking
+import com.example.projet_tdm.entity.Parking
 
 
 class ParkingListViewModel {

@@ -34,10 +34,25 @@
         <entry key="..\:/Users/hadia/Documents/Github/projet_tdm/app/src/main/res/layout/onboarding_screen_layaout.xml" value="0.1953125" />
         <entry key="..\:/Users/hadia/Documents/Github/projet_tdm/app/src/main/res/mipmap-anydpi-v26/img2.xml" value="0.147" />
         <entry key="..\:/Users/hadia/Documents/Github/projet_tdm/app/src/main/res/mipmap-anydpi-v26/img2_round.xml" value="0.147" />
+<<<<<<< HEAD
         <entry key="..\:/projet_tdm/projet_tdm/app/src/main/res/layout/activity_confirmation.xml" value="0.1" />
         <entry key="..\:/projet_tdm/projet_tdm/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/projet_tdm/projet_tdm/app/src/main/res/layout/activity_main.xml" value="0.259375" />
         <entry key="..\:/projet_tdm/projet_tdm/app/src/main/res/layout/activity_reservation.xml" value="0.2" />
+=======
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/activity_parking_details.xml" value="0.6" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/activity_parking_details2.xml" value="0.14791666666666667" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/fragment_dashboard.xml" value="0.14791666666666667" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/fragment_parking_list.xml" value="0.25" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/fragment_search.xml" value="0.6" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/fragment_user.xml" value="0.25" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/layout/search_layout.xml" value="0.6" />
+        <entry key="..\:/tdm_projet/frontend/projet_tdm/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+>>>>>>> 7cfd22cd4aa83dbdc26ae8b447cbab17dab76ce0
       </map>
     </option>
   </component>

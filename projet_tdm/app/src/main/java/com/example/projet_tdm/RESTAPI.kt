@@ -1,8 +1,7 @@
 package com.example.projet_tdm
 
-import com.example.projet_tdm.modals.User
+import com.example.projet_tdm.entity.User
 import com.google.gson.GsonBuilder
-import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
