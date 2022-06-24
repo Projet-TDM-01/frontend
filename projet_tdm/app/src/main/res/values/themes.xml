@@ -11,4 +11,10 @@
         <item name="colorOnSecondary">@color/black_opacity</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.Projet_tdm.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Projet_tdm.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Projet_tdm.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

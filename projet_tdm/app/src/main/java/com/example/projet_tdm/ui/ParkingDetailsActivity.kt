@@ -1,11 +1,14 @@
 package com.example.projet_tdm.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -46,7 +49,7 @@ class ParkingDetailsActivity : AppCompatActivity() {
                 Glide.with(this).load(parking.imglink)
                     .apply(RequestOptions())
                     .placeholder(R.drawable.parking)
-                    .into(binding.parkingImg)
+                    .into(findViewById<ImageView>(R.id.parking_img))
 
                 findViewById<TextView>(R.id.nom_parking).text = parking.nom
                 findViewById<TextView>(R.id.parking_commune).text = parking.commune
@@ -62,6 +65,10 @@ class ParkingDetailsActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.parking_start_hour).text  = "${parking.horraireOuver}:00"
                 findViewById<TextView>(R.id.parking_end_hour).text  = "${parking.horraireFerm}:00"
                 findViewById<TextView>(R.id.parking_prix).text  = "${parking.tarifHeure}"
+
+                findViewById<Button>(R.id.reserverBtn).setOnClickListener {
+
+                }
             } else {
                 // show erreur
             }
