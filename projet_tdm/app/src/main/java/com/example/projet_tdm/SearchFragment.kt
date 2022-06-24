@@ -34,7 +34,6 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById(R.id.searchRecyclerView) as RecyclerView
         val layoutManager = LinearLayoutManager(activity)
-        recyclerView.layoutManager = layoutManager
 
         val searchBar = view.findViewById<SearchView>(R.id.search_parking)
 

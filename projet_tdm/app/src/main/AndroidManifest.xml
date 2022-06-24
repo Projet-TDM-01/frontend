@@ -12,6 +12,14 @@
         android:theme="@style/Theme.Projet_tdm"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.ReservationDetailsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_reservation_details"
+            android:theme="@style/Theme.Projet_tdm.NoActionBar" />
+        <activity
+            android:name=".ui.ReservationsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ParkingDetailsActivity"
             android:exported="false" />
         <activity
