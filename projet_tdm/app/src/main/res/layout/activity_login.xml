@@ -8,110 +8,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
-
-
-    <LinearLayout
+<LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="173dp"
+        android:layout_weight="2"
         android:orientation="vertical">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
-                android:layout_weight="1"
-                android:fontFamily="serif"
-                android:padding="10dp"
-                android:text="Connecter vous"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/login"
 
 
-        <ImageView
-            android:id="@+id/imgAvatar"
-            android:layout_width="200dp"
-            android:layout_height="50dp" />
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="360dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/tvName"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:padding="10dp"
-            android:text="NAME"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="300dp"
-            android:layout_height="360dp"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:padding="10dp"
-            android:text="EMAIL"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="360dp"
-            android:id="@+id/tvGender"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:padding="10dp"
-            android:text="GENDER"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="360dp"
-            android:id="@+id/tvDob"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:padding="10dp"
-            android:text="BIRTHDAY"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="300dp"
-            android:layout_height="330dp"
-            android:id="@+id/tvFriends"
-            android:layout_weight="1"
-            android:fontFamily="serif"
-            android:padding="10dp"
-            android:text="FRIENDS"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                ></ImageView>
 
 
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:background="@color/white"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="serif"
-            android:padding="10dp"
-            android:text="Email/numéro de téléphone"
-            android:textColor="@color/black"
-            android:typeface="normal" />
-
+        >
         <EditText
             android:id="@+id/email_phone"
             android:layout_width="match_parent"
@@ -123,20 +50,12 @@
             android:drawablePadding="10dp"
             android:fontFamily="serif"
             android:padding="10dp"
-            android:text="email/numéro de téléphone"
+            android:text="Adresse Email"
             android:textColor="@color/gray"
             android:textSize="16sp" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="serif"
-            android:padding="10dp"
-            android:text="Mot de passe"
-            android:textColor="@color/black" />
+
 
 
         <EditText
@@ -151,23 +70,33 @@
             android:fontFamily="serif"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:text="mot de passe"
+            android:text="Mot de passe"
             android:textColor="@color/gray"
             android:textSize="16sp" />
 
+
         <Button
             android:id="@+id/login"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="200dp"
-            android:background="@drawable/button_background"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="serif"
-            android:text="Login"
+            android:background="@drawable/button_background"
+            android:text="Se connecter"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
 
         <TextView
             android:id="@+id/go_to_register"
@@ -183,13 +112,16 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp" />
+
+
 
     </LinearLayout>
-</LinearLayout  >
+
+</LinearLayout>
+
+
+
+
+
+
+
