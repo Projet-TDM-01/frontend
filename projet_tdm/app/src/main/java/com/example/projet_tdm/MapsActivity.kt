@@ -2,6 +2,7 @@ package com.example.projet_tdm
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.projet_tdm.ViewModels.ParkingListViewModel
 import com.example.projet_tdm.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -10,7 +11,12 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+lateinit var parkingViewModel: ParkingListViewModel
+
+
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+    private var isReady = false
+
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -24,7 +30,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+        mapFragment.getMapAsync(
+           this
+        )
+
     }
 
     /**
@@ -37,12 +46,50 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+        var Parkings = parkingViewModel.parkings
+        if (Parkings != null) {
+            for (i in Parkings.indices) {
+                if (Parkings[i].nom.isNotEmpty()) {
+                    val marker = LatLng(Parkings[i].latitude, Parkings[i].longitude)
+                    mMap.addMarker(MarkerOptions().position(marker).title(Parkings[i].nom))
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(23f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
+
+                }
+
+            }
+        }
+       /* mMap = googleMap
 //TODO : get latiitude and longitude from backend
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
 
     }
+
+     /*fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity.let {
+            parkingViewModel =
+                ViewModelProvider(requireActivity()).get(ParkingViewModel::class.java)
+        }
+    }*/
+
+    /*private fun updateMap(): OnMapReadyCallback {
+        var Parkings = parkingViewModel.parkings
+        if (Parkings != null) {
+            for (i in Parkings.indices) {
+                if (Parkings[i].nom.isNotEmpty()) {
+                    val marker = LatLng(Parkings[i].latitude, Parkings[i].longitude)
+                    mMap.addMarker(MarkerOptions().position(marker).title(Parkings[i].nom))
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(23f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
+
+                }
+
+            }
+        }
+    }*/
+
 }

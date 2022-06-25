@@ -114,10 +114,10 @@ class LoginActivity : AppCompatActivity() {
         // Toast.makeText(this, "Required", Toast.LENGTH_LONG).show()
         //}
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
-    }
+    }*/
     private fun loginUser(email :String , password : String) {
         compositeDiposable.add(authService.loginUser(email , password)
             .subscribeOn(Schedulers.io())
