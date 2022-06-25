@@ -1,25 +1,24 @@
 package com.example.projet_tdm
 
-import androidx.appcompat.app.AppCompatActivity
+//import com.example.projet_tdm.databinding.ActivityHomeBinding
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.projet_tdm.databinding.ActivityHomeBinding
-import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityHomeBinding
+  //  lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+      /*  binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)*/
 
         val parkingListFragment = ParkingListFragment()
         val userFragment = UserFragment()
         val searchFragment = SearchFragment()
 
-        setCurrentFragment(parkingListFragment)
+      /*  setCurrentFragment(parkingListFragment)
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -28,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.navigation_search -> setCurrentFragment(searchFragment)
             }
             true
-        }
+        }*/
     }
 
     private fun setCurrentFragment(fragment: Fragment) =

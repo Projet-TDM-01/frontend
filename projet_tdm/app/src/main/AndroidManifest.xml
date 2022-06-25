@@ -54,11 +54,11 @@
             />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".Confirmation"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Confirmation"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

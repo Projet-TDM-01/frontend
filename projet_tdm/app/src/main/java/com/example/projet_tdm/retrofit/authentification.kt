@@ -1,11 +1,9 @@
 package com.example.projet_tdm.retrofit
-
-import com.example.projet_tdm.url
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import java.util.*
 
 interface authentification {
     @POST("register")
@@ -14,10 +12,10 @@ interface authentification {
                      @Field("nom")  nom:String ,
                      @Field("prenom")  prenom:String ,
                      @Field("photo")  photo:String ,
-                     @Field("password")  password:String)
+                     @Field("password")  password:String):Observable<String>
 
     fun loginUser(@Field("email")  email:String,
-                  @Field("password")  password:String )
+                  @Field("password")  password:String ):Observable<String>
 
 
 }

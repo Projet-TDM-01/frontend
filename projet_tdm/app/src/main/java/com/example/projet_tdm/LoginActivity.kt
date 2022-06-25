@@ -2,16 +2,17 @@ package com.example.projet_tdm
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.example.projet_tdm.databinding.ActivityLoginBinding
+//import com.example.projet_tdm.databinding.ActivityLoginBindingImpl
+import com.example.projet_tdm.retrofit.authObject
 import com.example.projet_tdm.retrofit.authentification
 import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.GraphRequest
-import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -20,15 +21,17 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 
+
 class LoginActivity : AppCompatActivity() {
     lateinit var  fbBtn : LoginButton;
+    lateinit var loginbtn : Button
     var TAG = "Parks"
-    lateinit var  mainBinding : ActivityLoginBinding
+    //lateinit var  mainBinding : ActivityLoginBindingImpl
     lateinit var callbackManager : CallbackManager
 
 
     lateinit var authService : authentification
-    internal var compositeDiposable = compositeDisposable()
+    internal var compositeDiposable = CompositeDisposable()
 
     override fun onStop() {
         compositeDiposable.clear()
@@ -38,14 +41,24 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val retrofit = authObject.getInstance()
+        authService = retrofit.create(authService::class.java)
+        loginbtn = findViewById(R.id.login)
 
-        authService = c
-        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        loginbtn.setOnClickListener{
+            loginUser(email_phone.text.toString() , password.text.toString() )
+        }
+
+
+
+
+
+       // mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
         /*mainBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)*/
         callbackManager = CallbackManager.Factory.create()
-        mainBinding.loginButton.setReadPermissions(listOf("email" , "public_profile" , "user_gender" , "user_birthday" , "user_friends"))
+       /* mainBinding.loginButton.setReadPermissions(listOf("email" , "public_profile" , "user_gender" , "user_birthday" , "user_friends"))
         mainBinding.loginButton.registerCallback(callbackManager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(loginResult: LoginResult?) {
@@ -66,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                 override fun onError(exception: FacebookException) {
                     // App code
                 }
-            })
+            })*/
 
 
         go_to_register.setOnClickListener {
@@ -105,6 +118,16 @@ class LoginActivity : AppCompatActivity() {
         callbackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
     }
+    private fun loginUser(email :String , password : String) {
+        compositeDiposable.add(authService.loginUser(email , password)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                result -> Toast.makeText(this , ""+result, Toast.LENGTH_SHORT).show()
+            }
+
+        )
+    }
     private fun getFacebookData(obj: JSONObject?) {
        /* val profilePic = "https://graph.facebook.com/${obj?.getString("id")}/picture?width=200&height=200"
         Glide.with(this)
@@ -116,13 +139,13 @@ class LoginActivity : AppCompatActivity() {
         val total_count = obj?.getJSONObject("friends")?.getJSONObject("summary")
             ?.getString("total_cuont")
         val email = obj?.getString("email")
-        mainBinding.tvName.text = "NAME : ${name}"
+      /*  mainBinding.tvName.text = "NAME : ${name}"
         mainBinding.tvEmail.text = "EMAIL : ${email}"
         mainBinding.tvGender.text = "GENDER : ${gender}"
         mainBinding.tvDob.text = "DOB : ${birthday}"
         mainBinding.tvFriends.text = "FRIENDS COUNT : ${total_count}"
 
-
+*/
 
 
     }
