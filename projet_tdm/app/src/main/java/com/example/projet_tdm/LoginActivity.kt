@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-//import com.example.projet_tdm.databinding.ActivityLoginBindingImpl
+import com.example.projet_tdm.databinding.ActivityLoginBinding
 import com.example.projet_tdm.retrofit.authObject
 import com.example.projet_tdm.retrofit.authentification
 import com.facebook.CallbackManager
@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var  fbBtn : LoginButton;
     lateinit var loginbtn : Button
     var TAG = "Parks"
-    //lateinit var  mainBinding : ActivityLoginBindingImpl
+    lateinit var  mainBinding : ActivityLoginBinding
     lateinit var callbackManager : CallbackManager
 
 
@@ -53,12 +53,12 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-       // mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+      /*  mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)*/
 
-        /*mainBinding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(mainBinding.root)*/
+       /* mainBinding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(mainBinding.root)
         callbackManager = CallbackManager.Factory.create()
-       /* mainBinding.loginButton.setReadPermissions(listOf("email" , "public_profile" , "user_gender" , "user_birthday" , "user_friends"))
+        mainBinding.loginButton.setReadPermissions(listOf("email" , "public_profile" , "user_gender" , "user_birthday" , "user_friends"))
         mainBinding.loginButton.registerCallback(callbackManager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(loginResult: LoginResult?) {
@@ -79,9 +79,9 @@ class LoginActivity : AppCompatActivity() {
                 override fun onError(exception: FacebookException) {
                     // App code
                 }
-            })*/
+            })
 
-
+*/
         go_to_register.setOnClickListener {
             intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
