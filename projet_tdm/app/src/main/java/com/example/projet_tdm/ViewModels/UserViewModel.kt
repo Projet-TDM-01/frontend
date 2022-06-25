@@ -1,6 +1,5 @@
 package com.example.projet_tdm.ViewModels
 import android.view.Menu
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.projet_tdm.entity.User
@@ -71,5 +70,4 @@ class UserViewModel : ViewModel(){
             errorMessage.postValue( message)
             loading.value = false
         }
-    }
 }
