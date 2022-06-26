@@ -1,5 +1,6 @@
 package com.example.projet_tdm
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -203,6 +204,11 @@ class LoginActivity : AppCompatActivity() {
  setContentView(binding.root)
  var loginbtn: Button?
  loginbtn = findViewById(R.id.login)
+
+        binding.goToRegister.setOnClickListener {
+            intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
 
 
  val userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
