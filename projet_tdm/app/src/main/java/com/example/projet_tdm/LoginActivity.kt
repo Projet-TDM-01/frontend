@@ -1,14 +1,17 @@
 package com.example.projet_tdm
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.projet_tdm.ViewModels.UserViewModel
 import com.example.projet_tdm.databinding.ActivityLoginBinding
-import com.example.projet_tdm.retrofit.authObject
 import com.example.projet_tdm.retrofit.authentification
-import com.facebook.CallbackManager
-import com.facebook.login.widget.LoginButton
 import io.reactivex.disposables.CompositeDisposable
 
 
@@ -170,30 +173,146 @@ class LoginActivity : AppCompatActivity() {
 */
 
 class LoginActivity : AppCompatActivity() {
-    lateinit var fbBtn: LoginButton;
-    lateinit var loginbtn: Button
+    //lateinit var fbBtn: LoginButton;
+
     var TAG = "Parks"
     lateinit var mainBinding: ActivityLoginBinding
-    lateinit var callbackManager: CallbackManager
+  //  lateinit var callbackManager: CallbackManager
     lateinit var userViewModel: UserViewModel
 
     lateinit var authService: authentification
     internal var compositeDiposable = CompositeDisposable()
 
+    lateinit var binding: ActivityLoginBinding
+
     override fun onStop() {
         compositeDiposable.clear()
         super.onStop()
 
-        
+
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val retrofit = authObject.getInstance()
-        authService = retrofit.create(authService::class.java)
-        loginbtn = findViewById(R.id.login)
+       // val retrofit = authObject.getInstance()
+        //authService = retrofit.create(authService::class.java)
+       // binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+ binding = ActivityLoginBinding.inflate(layoutInflater)
+ setContentView(binding.root)
+ var loginbtn: Button?
+ loginbtn = findViewById(R.id.login)
 
 
-    }
+ val userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+ userViewModel.errorMessage.value = null
+ setupListers()
+
+ binding.login.setOnClickListener {
+     if (isValid()) {
+         val input = binding.emailPhone.text.toString()
+         val passwordUser = binding.password.text.toString()
+         var data: HashMap<String, String> = HashMap<String, String>()
+         if (android.util.Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
+             data["email"] = input;
+             data["password"] = passwordUser;
+             userViewModel.loginUserEmail(data)
+         } else if (android.util.Patterns.PHONE.matcher(input).matches()) {
+             data["phone"] = input;
+             data["password"] = passwordUser;
+             userViewModel.loginUserPhone(data)
+         } else {
+             Toast.makeText(
+                 this ,
+                 "Les données saisies sont invalides!",
+                 Toast.LENGTH_SHORT
+             ).show()
+         }
+     }
+ }
+/* userViewModel.loading.observe(viewLifecycleOwner, Observer { loading ->
+     if (!loading) {
+         binding.progressBarLogin.visibility = View.GONE
+     } else {
+         binding.progressBarLogin.visibility = View.VISIBLE
+     }
+ })*/
+/* userViewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
+     if (message != null) {
+         Toast.makeText(
+             requireActivity(),
+             "Une erreur s'est produite",
+             Toast.LENGTH_SHORT
+         ).show()
+         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+     }
+ })*/
+
+ userViewModel.errorMessage.observe(this, Observer { message ->
+     if (message != null) {
+         Toast.makeText(this, "Une erreur s'est produite", Toast.LENGTH_SHORT)
+             .show()
+         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+     }
+ })
+}
+
+inner class textFieldValidation(private val view: View) : TextWatcher {
+ override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+ }
+
+ override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+     when (view.id) {
+         R.id.email -> {
+             validateInput()
+         }
+         R.id.password -> {
+             validatePassword()
+         }
+     }
+ }
+
+ override fun afterTextChanged(p0: Editable?) {
+ }
+}
+
+fun isValid(): Boolean = validateInput() && validatePassword()
+
+fun validateInput(): Boolean {
+ if (binding.emailPhone.text.toString().trim().isEmpty()) {
+     binding.emailPhone.error = "Champs requis!"
+     binding.emailPhone.requestFocus()
+     return false
+ } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailPhone.text.toString())
+         .matches() && !android.util.Patterns.PHONE.matcher(binding.emailPhone.text.toString())
+         .matches()
+ ) {
+     binding.emailPhone.error = "Email/Numero de telephone invalide!"
+     binding.emailPhone.requestFocus()
+     return false
+ } else {
+    // binding.emailPhone.isErrorEnabled = false
+ }
+ return true
+}
+
+fun validatePassword(): Boolean {
+ if (binding.password.text.toString().isEmpty()) {
+     binding.emailPhone.error = "Champs obligatoire."
+     binding.password.requestFocus()
+     return false
+ } else if (binding.password.text.toString().length < 6) {
+     binding.password.error =
+         "Le mot de passe doit contenir au moins 6 caractères."
+     binding.password.requestFocus()
+     return false
+ }
+ return true
+}
+
+fun setupListers() {
+ binding.emailPhone.addTextChangedListener(textFieldValidation(binding.emailPhone))
+ binding.password.addTextChangedListener(textFieldValidation(binding.password))
+}
 }
