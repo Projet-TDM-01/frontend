@@ -67,7 +67,8 @@ class ParkingDetailsActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.parking_prix).text  = "${parking.tarifHeure}"
 
                 findViewById<Button>(R.id.reserverBtn).setOnClickListener {
-
+                    val intent = Intent(this, ReservationsListActivity::class.java)
+                    startActivity(intent)
                 }
             } else {
                 // show erreur

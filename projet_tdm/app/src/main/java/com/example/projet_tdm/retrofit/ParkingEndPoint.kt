@@ -9,6 +9,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ParkingEndPoint {
+    @GET("parkings")
+    suspend fun getParkings(): Response<List<Parking>>
+
     @GET("parkings/{parkingId}")
     suspend fun getParkingByiD(@Path("parkingId") parkingId: String): Response<Parking>
 

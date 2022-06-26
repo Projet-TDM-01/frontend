@@ -20,6 +20,7 @@ import com.example.projet_tdm.entity.Parking
 import com.example.projet_tdm.entity.Reservation
 import com.example.projet_tdm.load
 import com.example.projet_tdm.ui.ParkingDetailsActivity
+import com.example.projet_tdm.ui.ReservationDetailsActivity
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -48,12 +49,17 @@ class ReservationAdapter(val context: Context, var data: List<Reservation>) :
             // here apply the shit
             reservationId.text = data[position]._id
 
-            dateEntree.text = SimpleDateFormat("dd-MM-yyyy à hh:mm").format(data[position].dateEntree)
-            dateSortie.text = SimpleDateFormat("dd-MM-yyyy à hh:mm").format(data[position].dateSortie)
+            dateEntree.text =
+                SimpleDateFormat("dd-MM-yyyy à hh:mm").format(data[position].dateEntree)
+            dateSortie.text =
+                SimpleDateFormat("dd-MM-yyyy à hh:mm").format(data[position].dateSortie)
 
             numero.text = data[position].numeroPlace.toString()
             details.setOnClickListener {
                 // do some shit and redirect the user to a reservation detail screen where the QR code
+                val intent = Intent(itemView.context, ReservationDetailsActivity::class.java)
+                intent.putExtra("reservation", data[position])
+                startActivity(itemView.context, intent, null)
             }
         }
     }

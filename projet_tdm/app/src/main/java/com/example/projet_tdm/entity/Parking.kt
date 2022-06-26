@@ -1,5 +1,7 @@
 package com.example.projet_tdm.entity
 
+import java.io.Serializable
+
 data class Parking(
     val _id: String,
     val imglink: String,
@@ -11,5 +13,5 @@ data class Parking(
     val horraireFerm: Int,
     val tarifHeure: Double,
     val nbPlace: Int,
-    val reserved:Int?
-)
+    val reserved: Int?
+) : Serializable

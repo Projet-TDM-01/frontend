@@ -23,9 +23,6 @@
             android:name=".ui.ParkingDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.parking_details.ParkingDetailsActivity"
-            android:exported="false" />
-        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

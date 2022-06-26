@@ -1,5 +1,6 @@
 package com.example.projet_tdm.entity
 
+import java.io.Serializable
 import java.util.*
 
 data class Reservation(
@@ -8,4 +9,4 @@ data class Reservation(
     val dateSortie: Date,
     val numeroPlace: Int,
     val parking: Parking,
-)
+) : Serializable
